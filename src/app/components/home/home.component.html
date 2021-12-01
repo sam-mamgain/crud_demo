@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-end mb-4">
+  <button mat-raised-button color="primary" routerLink="/product">Add New Product</button>
+</div>
+
+<mat-card>
+  <mat-card-title>All Products</mat-card-title>
+  <mat-card-content>
+    <table class="table mt-5 text-center">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{product.title}}</td>
+          <td title="{{product.description}}">{{product.description | slice:0:40}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td class="d-flex justify-content-around">
+            <button class="btn btn-sm text-success">
+              <mat-icon class="d-flex" (click)="updateProduct(product.id)">edit</mat-icon>
+            </button>
+            <button class="btn btn-sm text-danger">
+              <mat-icon class="d-flex" (click)="openDialog(product.id)">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+
+</mat-card>
+
+<br><br><br><br>
+
+<ng-template #deleteDialog>
+  <h1 mat-dialog-title>Delete Product</h1>
+  <div mat-dialog-content>
+    <p>Press Delete to permanantly delete product</p>
+  </div>
+  <div mat-dialog-actions class="float-right">
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+    <button mat-button color="warn" (click)="deleteProduct()">Delete</button>
+  </div>
+</ng-template>

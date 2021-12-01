@@ -1,0 +1,46 @@
+<div class="box">
+  <mat-card class="w-50">
+    <mat-card-title class="mb-4">{{productId ? "Update": "Add New"}} Product</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="productForm" (submit)="productId === undefined ? addNewProduct() : updateProduct()">
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Description</mat-label>
+            <textarea matInput type="text" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Price</mat-label>
+            <input type="number" matInput formControlName="price">
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="legacy">
+            <mat-label>Quantity</mat-label>
+            <input type="number" matInput formControlName="quantity">
+          </mat-form-field>
+        </div>
+        <mat-card-actions align="end">
+          <button type="submit" mat-button color="primary">{{productId ? "Update": "Add"}}</button>
+          <button type="button" mat-button color="warn" routerLink="/home">Cancel</button>
+
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+
+    <mat-card-footer class="text-center">
+      <h3 class="text-success">{{successMsg | titlecase}}</h3>
+      <h3 class="text-danger">{{errorMsg | titlecase}}</h3>
+    </mat-card-footer>
+
+  </mat-card>
+</div>
