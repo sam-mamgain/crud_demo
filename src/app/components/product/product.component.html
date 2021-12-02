@@ -1,7 +1,7 @@
 <div class="box">
-  <mat-card class="w-50">
-    <mat-card-title class="mb-4">{{productId ? "Update": "Add New"}} Product</mat-card-title>
-    <mat-card-content>
+  <mat-card class="boxCard">
+    <mat-card-title class="p-4">{{productId ? "Update": "Add New"}} Product</mat-card-title>
+    <mat-card-content class="pl-4 pr-4">
       <form [formGroup]="productForm" (submit)="productId === undefined ? addNewProduct() : updateProduct()">
         <div class="form-group">
           <mat-form-field appearance="legacy">
@@ -30,7 +30,7 @@
           </mat-form-field>
         </div>
         <mat-card-actions align="end">
-          <button type="button" mat-stroked-button color="warn" routerLink="/home">Cancel</button>
+          <button type="button" mat-stroked-button color="warn" routerLink="/">Back</button>
           <button type="submit" mat-stroked-button color="primary">{{productId ? "Update": "Add"}}</button>
 
         </mat-card-actions>

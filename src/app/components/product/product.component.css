@@ -3,6 +3,10 @@
   justify-content: center;
 }
 
+.boxCard {
+  min-width: 50%;
+}
+
 .mat-form-field{
   display: block;
 }

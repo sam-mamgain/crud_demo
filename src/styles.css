@@ -9,5 +9,5 @@ body {
 
 mat-card {
   background-color: rgb(246, 255, 241) !important;
-  box-shadow: 10px 10px 30px rgb(138, 131, 194) !important;
+  box-shadow: 10px 10px 30px gray !important;
 }

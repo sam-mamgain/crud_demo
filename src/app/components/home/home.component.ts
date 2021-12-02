@@ -22,9 +22,9 @@ import { ProductsService } from "src/app/services/products.service";
         animate(200)
       ]),
       transition('* => void', [
-        animate(200, style({
+        animate(250, style({
           opacity: 0,
-          transform: 'translateX(100px)'
+          transform: 'translateY(-150px)'
         }))
       ])
     ])
