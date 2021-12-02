@@ -1,3 +1,7 @@
 .wrapper {
   overflow-x: auto;
 }
+
+table td, table th {
+  vertical-align: middle;
+}
