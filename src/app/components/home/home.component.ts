@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { animate, state, style, transition, trigger } from "@angular/animations";
+
 import { MatDialog } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { ProductsService } from "src/app/services/products.service";
@@ -6,7 +8,27 @@ import { ProductsService } from "src/app/services/products.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('slide', [
+      state('visible', style({
+        opacity: 1,
+      })),
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'translateX(-100px)'
+        }),
+        animate(200)
+      ]),
+      transition('* => void', [
+        animate(200, style({
+          opacity: 0,
+          transform: 'translateX(100px)'
+        }))
+      ])
+    ])
+  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -43,7 +65,8 @@ export class HomeComponent implements OnInit {
     console.log(this.currentProductId);
     this.productService.deleteProduct(this.currentProductId).subscribe(result => {
       if (result.success) {
-        this.getAllProducts();
+        // this.getAllProducts();
+        this.products.splice(this.products.findIndex(i => i.id == this.currentProductId), 1);
         this.dialog.closeAll();
       }
     });

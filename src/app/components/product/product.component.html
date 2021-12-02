@@ -12,7 +12,7 @@
         <div class="form-group">
           <mat-form-field appearance="legacy">
             <mat-label>Description</mat-label>
-            <textarea matInput type="text" formControlName="description"></textarea>
+            <textarea matInput type="text" [matTextareaAutosize]="true" formControlName="description"></textarea>
           </mat-form-field>
         </div>
 
@@ -30,8 +30,8 @@
           </mat-form-field>
         </div>
         <mat-card-actions align="end">
-          <button type="submit" mat-button color="primary">{{productId ? "Update": "Add"}}</button>
-          <button type="button" mat-button color="warn" routerLink="/home">Cancel</button>
+          <button type="button" mat-stroked-button color="warn" routerLink="/home">Cancel</button>
+          <button type="submit" mat-stroked-button color="primary">{{productId ? "Update": "Add"}}</button>
 
         </mat-card-actions>
       </form>
