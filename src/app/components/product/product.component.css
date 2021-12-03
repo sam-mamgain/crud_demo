@@ -10,3 +10,22 @@
 .mat-form-field{
   display: block;
 }
+
+.successBg {
+  animation: slow 3000ms;
+  background-color: rgba(0, 128, 0, 0.089);
+}
+
+.errorBg {
+  background-color: rgba(255, 0, 0, 0.089);
+  animation: slow 3000ms;
+}
+
+@keyframes slow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -2,17 +2,19 @@
   <mat-card class="boxCard">
     <mat-card-title class="p-4">{{productId ? "Update": "Add New"}} Product</mat-card-title>
     <mat-card-content class="pl-4 pr-4">
-      <form [formGroup]="productForm" (submit)="productId === undefined ? addNewProduct() : updateProduct()">
+      <form [formGroup]="productForm" #formDirective="ngForm" (submit)="productId === undefined ? addNewProduct(formDirective) : updateProduct()">
         <div class="form-group">
           <mat-form-field appearance="legacy">
             <mat-label>Title</mat-label>
             <input matInput type="text" formControlName="title">
+            <mat-error *ngIf="productForm.get('title')?.errors?.required">Title is required</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field appearance="legacy">
             <mat-label>Description</mat-label>
             <textarea matInput type="text" [matTextareaAutosize]="true" formControlName="description"></textarea>
+            <mat-error *ngIf="productForm.get('description')?.errors?.required">Description is required</mat-error>
           </mat-form-field>
         </div>
 
@@ -20,6 +22,7 @@
           <mat-form-field appearance="legacy">
             <mat-label>Price</mat-label>
             <input type="number" matInput formControlName="price">
+            <mat-error *ngIf="productForm.get('price')?.errors?.required">Price is required</mat-error>
           </mat-form-field>
         </div>
 
@@ -27,6 +30,7 @@
           <mat-form-field appearance="legacy">
             <mat-label>Quantity</mat-label>
             <input type="number" matInput formControlName="quantity">
+            <mat-error *ngIf="productForm.get('quantity')?.errors?.required">Quantity is required</mat-error>
           </mat-form-field>
         </div>
         <mat-card-actions align="end">
@@ -38,8 +42,8 @@
     </mat-card-content>
 
     <mat-card-footer class="text-center">
-      <h3 class="text-success">{{successMsg | titlecase}}</h3>
-      <h3 class="text-danger">{{errorMsg | titlecase}}</h3>
+      <h3 class="text-success successBg">{{successMsg | titlecase}}</h3>
+      <h3 class="text-danger errorBg">{{errorMsg | titlecase}}</h3>
     </mat-card-footer>
 
   </mat-card>

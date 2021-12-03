@@ -23,6 +23,7 @@ import { ProductsService } from "src/app/services/products.service";
       ]),
       transition('* => void', [
         animate(250, style({
+          backgroundColor: '#f4433675',
           opacity: 0,
           transform: 'translateY(-150px)'
         }))
