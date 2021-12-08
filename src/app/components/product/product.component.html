@@ -1,5 +1,9 @@
 <div class="box">
   <mat-card class="boxCard">
+    <div class="text-center">
+      <h3 class="text-success successBg">{{successMsg | titlecase}}</h3>
+      <h3 class="text-danger errorBg">{{errorMsg | titlecase}}</h3>
+    </div>
     <mat-card-title class="p-4">{{productId ? "Update": "Add New"}} Product</mat-card-title>
     <mat-card-content class="pl-4 pr-4">
       <form [formGroup]="productForm" #formDirective="ngForm" (submit)="productId === undefined ? addNewProduct(formDirective) : updateProduct()">
@@ -40,11 +44,6 @@
         </mat-card-actions>
       </form>
     </mat-card-content>
-
-    <mat-card-footer class="text-center">
-      <h3 class="text-success successBg">{{successMsg | titlecase}}</h3>
-      <h3 class="text-danger errorBg">{{errorMsg | titlecase}}</h3>
-    </mat-card-footer>
 
   </mat-card>
 </div>
